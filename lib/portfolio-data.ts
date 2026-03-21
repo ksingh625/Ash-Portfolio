@@ -78,15 +78,35 @@ export const portfolioData = {
   whatIDo: [
     {
       category: "UI/UX Design",
-      skills: ["Wireframes", "User flows", "Prototypes", "Design systems"],
+      skills: [
+        "Wireframes & mockups",
+        "Interactive prototypes",
+        "Design systems & style guides",
+        "User flow diagrams",
+        "Mobile-first & responsive design",
+        "UX research and audits"
+      ],
     },
     {
-      category: "Frontend Development",
-      skills: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "React.js"],
+      category: "Front-End Development",
+      skills: [
+        "HTML / CSS / JavaScript",
+        "React.js Development",
+        "Tailwind CSS",
+        "Responsive UI Components",
+        "Performance Optimization",
+        "Seamless Product Experience"
+      ],
     },
     {
-      category: "Full-Stack Development",
-      skills: ["Node.js", "PHP", "MySQL", "MongoDB", "REST APIs"],
+      category: "Design to Code",
+      skills: [
+        "Framer development",
+        "Clean, scalable, maintainable code",
+        "SEO-ready structure",
+        "Mobile & tablet optimization",
+        "Asset optimization for performance"
+      ],
     },
   ],
   techStack: {
@@ -98,29 +118,30 @@ export const portfolioData = {
       title: "Smart India Hackathon",
       description: "Top 50 ranking among 9000+ participants",
     },
+  ],
+  education: [
     {
-      title: "Education",
-      description: "Bachelor of Technology in Computer Science and Engineering",
+      title: "Bachelor of Technology in Computer Science and Engineering",
       school: "Lovely Professional University",
       cgpa: "7.78",
     },
-    {
-      title: "Certificates",
-      certs: [
-        "Cloud Computing – NPTEL",
-        "Data Structures and Algorithms – Iamneo",
-        "Introduction to Hardware and Operating Systems – IBM",
-        "Database Management System – EBOX",
-      ],
-    },
+  ],
+  certificates: [
+    "Cloud Computing – NPTEL",
+    "Data Structures and Algorithms – Iamneo",
+    "Introduction to Hardware and Operating Systems – IBM",
+    "Database Management System – EBOX",
   ],
   navigation: [
-    { label: "Work", id: "work" },
+    { label: "Home", id: "hero" },
     { label: "About me", id: "about" },
+    { label: "Experience", id: "experience" },
     { label: "What I do", id: "what-i-do" },
     { label: "Tech stack", id: "tech-stack" },
-    { label: "Awards", id: "awards" },
-    { label: "Blog", id: "blog" },
+    { label: "Projects", id: "projects" },
+    { label: "Certificates", id: "certificates" },
+    { label: "Achievements", id: "achievements" },
+    { label: "Education", id: "education" },
     { label: "Contact me", id: "contact" },
   ],
 };

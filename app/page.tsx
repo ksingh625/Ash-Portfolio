@@ -1,48 +1,89 @@
 'use client';
 
+import { useState } from 'react';
 import { Header } from '@/components/portfolio/Header';
 import { LeftSidebar } from '@/components/portfolio/LeftSidebar';
 import { RightSidebar } from '@/components/portfolio/RightSidebar';
-import { LineCounterProvider } from '@/components/portfolio/ContinuousLineCounter';
+import { GlobalIDEWrapper } from '@/components/portfolio/GlobalIDEWrapper';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { WorkSection } from '@/components/sections/WorkSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { WhatIDoSection } from '@/components/sections/WhatIDoSection';
 import { TechStackSection } from '@/components/sections/TechStackSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { AchievementsSection } from '@/components/sections/AchievementsSection';
+import { CertificatesSection } from '@/components/sections/CertificatesSection';
+import { EducationSection } from '@/components/sections/EducationSection';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { ProfilePhotoCard } from '@/components/portfolio/ProfilePhotoCard';
+import { ClipoWorkPage } from '@/components/work/ClipoWorkPage';
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('ash.info');
+
   return (
     <div className="bg-background text-foreground h-screen flex flex-col overflow-hidden">
-      <Header />
+      <Header activeTab={activeTab} onTabChange={setActiveTab} />
       
       <div className="flex flex-1 overflow-hidden">
         {/* Left Sidebar */}
-        <div className="w-72 flex-shrink-0 border-r border-border">
+        <div className="w-68 flex-shrink-0 border-r border-border">
           <LeftSidebar />
         </div>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
-          <LineCounterProvider>
-            <div className="px-12 py-0">
-              <HeroSection />
-              <WorkSection />
-              <AboutSection />
-              <WhatIDoSection />
-              <TechStackSection />
-              <ExperienceSection />
-              <AchievementsSection />
-              <ContactSection />
+        <main className="flex-1 overflow-y-auto" id="main-scroll-container">
+          {activeTab === 'ash.info' && (
+            <GlobalIDEWrapper>
+              <div className="py-0 flex flex-col gap-28">
+                <HeroSection />
+                
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start relative">
+                  {/* Left side: The flowing sections */}
+                  <div className="md:col-span-3 flex flex-col gap-28">
+                    <AboutSection />
+                    <ExperienceSection />
+                  </div>
+                  
+                  {/* Right side: Sticky Photo */}
+                  <div className="md:col-span-2 relative hidden md:block h-full">
+                    <div className="sticky top-24">
+                      <ProfilePhotoCard />
+                    </div>
+                  </div>
+                </div>
+
+                <WhatIDoSection />
+                <TechStackSection />
+                <ProjectsSection />
+                <CertificatesSection />
+                <AchievementsSection />
+                <EducationSection />
+                <ContactSection />
+              </div>
+            </GlobalIDEWrapper>
+          )}
+
+          {activeTab === 'work.done' && (
+            <ClipoWorkPage />
+          )}
+
+          {activeTab === 'blog.share' && (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-muted-foreground font-mono text-sm">Coming soon...</p>
             </div>
-          </LineCounterProvider>
+          )}
         </main>
 
         {/* Right Sidebar */}
-        <div className="w-72 flex-shrink-0 border-l border-border">
-          <RightSidebar />
+        <div className="w-48 flex-shrink-0 border-l border-border">
+          <RightSidebar onNavigateToContact={() => {
+            setActiveTab('ash.info');
+            setTimeout(() => {
+              const el = document.getElementById('contact');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+          }} />
         </div>
       </div>
     </div>

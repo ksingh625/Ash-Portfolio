@@ -1,38 +1,37 @@
 'use client';
 
 import { portfolioData } from '@/lib/portfolio-data';
-import { IDEWrapper } from '@/components/portfolio/IDEWrapper';
-import { useLineCounter } from '@/components/portfolio/ContinuousLineCounter';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export function ExperienceSection() {
-  const { registerSection } = useLineCounter();
-  const startLine = registerSection('experience', 50);
 
   return (
     <section id="experience" className="mb-0 pt-0">
-      <IDEWrapper startLine={startLine} lineCount={50}>
         {`<!-- In a previous life -->\n\n`}
-        <h2 className="text-3xl font-bold text-foreground">Experience</h2>
+        <FadeIn delay={0.1}>
+          <h2 className="text-3xl font-bold text-foreground">Experience</h2>
+        </FadeIn>
 
-        <div className="space-y-8 mt-4">
+        <div className="flex flex-col mt-4 border-t border-border">
           {portfolioData.experience.map((exp, idx) => (
-            <div key={idx} className="border-l-2 border-primary pl-6">
-              <p className="text-sm text-muted-foreground mb-1 font-code">{exp.period}</p>
-              <h3 className="text-xl font-bold text-foreground mb-1">{exp.role}</h3>
-              <p className="text-sm text-primary font-semibold mb-4">{exp.company}</p>
-
-              <ul className="space-y-2">
-                {exp.achievements.map((achievement, aidx) => (
-                  <li key={aidx} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-primary">▸</span>
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FadeIn key={idx} delay={0.2 + idx * 0.15} className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-border py-8 hover:bg-white/[0.02] transition-colors cursor-default">
+              {/* Period */}
+              <div className="font-mono text-sm text-primary">
+                {exp.period}
+              </div>
+              
+              {/* Role */}
+              <div className="font-mono text-sm font-bold text-foreground">
+                {exp.role}
+              </div>
+              
+              {/* Company */}
+              <div className="font-mono text-sm text-muted-foreground">
+                {exp.company}
+              </div>
+            </FadeIn>
           ))}
         </div>
-      </IDEWrapper>
     </section>
   );
 }

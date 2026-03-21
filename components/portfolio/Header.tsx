@@ -1,9 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-export function Header() {
-  const [activeTab, setActiveTab] = useState('ash.info');
+interface HeaderProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
+
+export function Header({ activeTab, onTabChange }: HeaderProps) {
   const [time, setTime] = useState('');
 
   const tabs = ['ash.info', 'work.done', 'blog.share'];
@@ -23,7 +28,12 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 bg-background border-b border-border flex items-stretch z-40 h-12">
+    <motion.header 
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border flex items-stretch z-50 h-12"
+    >
       {/* Left: Welcome text */}
       <div className="px-18 text-xs text-muted-foreground flex items-center h-full whitespace-nowrap">
         Welcome to my world!
@@ -34,7 +44,7 @@ export function Header() {
         {tabs.map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => onTabChange(tab)}
             className={`px-8 text-xs flex items-center border-l border-border transition-colors ${
               activeTab === tab
                 ? 'bg-neutral-900 text-foreground border-b-2 border-b-accent'
@@ -58,6 +68,6 @@ export function Header() {
         <span>New Delhi, India</span>
         <span>My time: {time}</span>
       </div>
-    </header>
+    </motion.header>
   );
 }

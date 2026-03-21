@@ -1,35 +1,31 @@
 'use client';
 
 import { portfolioData } from '@/lib/portfolio-data';
-import { IDEWrapper } from '@/components/portfolio/IDEWrapper';
-import { useLineCounter } from '@/components/portfolio/ContinuousLineCounter';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export function WhatIDoSection() {
-  const { registerSection } = useLineCounter();
-  const startLine = registerSection('what-i-do', 25);
 
   return (
     <section id="what-i-do" className="mb-0 pt-0">
-      <IDEWrapper startLine={startLine} lineCount={25}>
         {`<!-- What I do -->\n\n`}
-        <h2 className="text-3xl font-bold text-foreground">What I Do</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+        
+        <div className="flex flex-col gap-12 mt-2">
           {portfolioData.whatIDo.map((item, idx) => (
-            <div key={idx} className="border border-border rounded-lg p-6 hover:border-primary/50 transition">
-              <h3 className="text-lg font-bold text-foreground mb-4">{item.category}</h3>
-              <ul className="space-y-2">
+            <FadeIn key={idx} delay={idx * 0.15} className="flex flex-col gap-6">
+              <h3 className="text-xl font-bold text-foreground">
+                {idx + 1}. {item.category}
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-6">
                 {item.skills.map((skill, skillIdx) => (
-                  <li key={skillIdx} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-primary">•</span>
-                    {skill}
+                  <li key={skillIdx} className="text-sm text-muted-foreground flex items-start gap-3 font-mono">
+                    <span className="text-muted-foreground">•</span>
+                    <span className="leading-relaxed hover:text-foreground transition-colors cursor-default">{skill}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </FadeIn>
           ))}
         </div>
-      </IDEWrapper>
     </section>
   );
 }

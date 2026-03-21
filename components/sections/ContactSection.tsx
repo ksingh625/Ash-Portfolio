@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { IDEWrapper } from '@/components/portfolio/IDEWrapper';
-import { useLineCounter } from '@/components/portfolio/ContinuousLineCounter';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,8 +13,6 @@ export function ContactSection() {
     subject: '',
     message: '',
   });
-  const { registerSection } = useLineCounter();
-  const startLine = registerSection('contact', 35);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,71 +27,111 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="mb-0 pt-0 pb-20">
-      <IDEWrapper startLine={startLine} lineCount={35}>
-        {`<!-- Contact me -->\n\n`}
-        <h2 className="text-3xl font-bold text-foreground">Contact Me</h2>
+    <section id="contact" className="mb-0 mt-16 pt-0 pb-12">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
 
-        <form onSubmit={handleSubmit} className="max-w-2xl space-y-6 mt-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-              className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
-            />
-            <Input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-              className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
-            />
-          </div>
+        {/* Left Side: Header */}
+        <div className="md:col-span-2">
+          <FadeIn delay={0.1}>
+            <p className="font-mono text-sm text-muted-foreground mb-4">
+              {`<!-- Get in Touch -->`}
+            </p>
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground leading-[1.1] tracking-tight">
+              Let&apos;s Work<br />
+              <span className="text-muted-foreground">Together</span>
+            </h2>
+          </FadeIn>
+        </div>
 
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
-          />
+        {/* Right Side: Form */}
+        <div className="md:col-span-3">
+          <FadeIn delay={0.2}>
+            <form onSubmit={handleSubmit} className="space-y-6">
 
-          <Input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
-          />
+              {/* First & Last Name */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">First name*</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="Mazakine"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-[#111] border border-border/40 text-foreground px-4 py-3 font-mono text-sm rounded-sm focus:outline-none focus:border-foreground/50 transition-colors placeholder:text-muted-foreground/50"
+                  />
+                </div>
+                <div>
+                  <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">Last name*</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Reed"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-[#111] border border-border/40 text-foreground px-4 py-3 font-mono text-sm rounded-sm focus:outline-none focus:border-foreground/50 transition-colors placeholder:text-muted-foreground/50"
+                  />
+                </div>
+              </div>
 
-          <textarea
-            name="message"
-            placeholder="Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={6}
-            className="w-full px-4 py-3 bg-secondary border border-border rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
-          />
+              {/* Email */}
+              <div>
+                <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">Email address*</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="example@gmail.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#111] border border-border/40 text-foreground px-4 py-3 font-mono text-sm rounded-sm focus:outline-none focus:border-foreground/50 transition-colors placeholder:text-muted-foreground/50"
+                />
+              </div>
 
-          <Button
-            type="submit"
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
-          >
-            Send Message
-          </Button>
-        </form>
-      </IDEWrapper>
+              {/* Subject */}
+              <div>
+                <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">Subject*</label>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Tell us the purpose"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#111] border border-border/40 text-foreground px-4 py-3 font-mono text-sm rounded-sm focus:outline-none focus:border-foreground/50 transition-colors placeholder:text-muted-foreground/50"
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">Message</label>
+                <textarea
+                  name="message"
+                  placeholder="Write your message here"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="w-full bg-[#111] border border-border/40 text-foreground px-4 py-4 font-mono text-sm rounded-sm focus:outline-none focus:border-foreground/50 transition-colors resize-y placeholder:text-muted-foreground/50 min-h-[120px]"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div>
+                <button
+                  type="submit"
+                  className="bg-foreground text-background font-mono text-sm font-bold px-6 py-3 hover:bg-foreground/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                >
+                  Send message
+                </button>
+              </div>
+
+            </form>
+          </FadeIn>
+        </div>
+      </div>
     </section>
   );
 }

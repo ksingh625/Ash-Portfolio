@@ -1,8 +1,7 @@
 'use client';
 
-import { IDEWrapper } from '@/components/portfolio/IDEWrapper';
-import { useLineCounter } from '@/components/portfolio/ContinuousLineCounter';
 import Image from 'next/image';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 const techItems = [
   { name: 'C++',        icon: 'https://cdn.simpleicons.org/cplusplus',   },
@@ -20,26 +19,24 @@ const techItems = [
 ];
 
 export function TechStackSection() {
-  const { registerSection } = useLineCounter();
-  const startLine = registerSection('tech-stack', 30);
 
   return (
     <section id="tech-stack" className="mb-0 pt-0">
-      <IDEWrapper startLine={startLine} lineCount={30}>
         <div className="py-4 px-2">
           <p className="text-muted-foreground text-xs font-mono mb-6">{'<!-- My tech stack -->'}</p>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 border-l border-t border-border">
-            {techItems.map((item) => (
-              <div
+            {techItems.map((item, idx) => (
+              <FadeIn
                 key={item.name}
-                className="flex flex-col items-start justify-between border-r border-b border-border p-4 gap-4"
+                delay={idx * 0.05}
+                className="flex flex-col items-start justify-between border-r border-b border-border p-4 gap-4 hover:-translate-y-1 hover:shadow-lg hover:bg-neutral-900 transition-all duration-300 cursor-default"
               >
                 {/* Name */}
                 <span className="text-xs text-foreground font-mono">{item.name}</span>
 
                 {/* Icon */}
-                <div className="w-10 h-10 relative">
+                <div className="w-10 h-10 relative saturate-0 hover:saturate-100 transition-all duration-300">
                   <Image
                     src={item.icon}
                     alt={item.name}
@@ -49,11 +46,10 @@ export function TechStackSection() {
                     unoptimized
                   />
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
-      </IDEWrapper>
     </section>
   );
 }

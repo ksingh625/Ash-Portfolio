@@ -1,23 +1,29 @@
 'use client';
 
-import { portfolioData } from '@/lib/portfolio-data';
 import Image from 'next/image';
 import { MapPin, Mail, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { portfolioData } from '@/lib/portfolio-data';
 
 export function LeftSidebar() {
   const { profile } = portfolioData;
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/Ashish_Kumar_Singh_CV.pdf';
-    link.download = 'Ashish_Kumar_Singh_CV.pdf';
+    link.href = '/Ashish Kumar Singh CV.pdf';
+    link.download = 'Ashish Kumar Singh CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <aside className="sticky top-12 h-[calc(100vh-48px)] w-full bg-background border-r border-border px-5 py-4 flex flex-col gap-5 my-3">
+    <motion.aside 
+      initial={{ x: -50, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="sticky top-12 h-[calc(100vh-48px)] w-full bg-background border-r border-border px-5 py-4 flex flex-col gap-5 my-3"
+    >
       {/* Profile Image */}
       <div className="flex justify-start">
         <div className="relative">
@@ -78,6 +84,6 @@ export function LeftSidebar() {
         </button>
 
       </div>
-    </aside>
+    </motion.aside>
   );
 }
