@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/portfolio/Header';
 import { LeftSidebar } from '@/components/portfolio/LeftSidebar';
 import { RightSidebar } from '@/components/portfolio/RightSidebar';
@@ -17,11 +18,13 @@ import { EducationSection } from '@/components/sections/EducationSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { ProfilePhotoCard } from '@/components/portfolio/ProfilePhotoCard';
 import { ClipoWorkPage } from '@/components/work/ClipoWorkPage';
+import { BootLoader } from '@/components/animations/BootLoader';
 import { MobileMenu } from '@/components/portfolio/MobileMenu';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('ash.info');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBooting, setIsBooting] = useState(true);
 
   const handleNavigate = (id: string) => {
     setActiveTab('ash.info');
@@ -32,7 +35,12 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-background text-foreground h-screen flex flex-col overflow-hidden">
+    <>
+      <AnimatePresence>
+        {isBooting && <BootLoader onComplete={() => setIsBooting(false)} />}
+      </AnimatePresence>
+
+      <div className={`bg-background text-foreground h-screen flex flex-col overflow-hidden transition-opacity duration-1000 ${isBooting ? 'opacity-0' : 'opacity-100'}`}>
       <Header 
         activeTab={activeTab} 
         onTabChange={setActiveTab} 
@@ -111,6 +119,7 @@ export default function Home() {
           }} />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

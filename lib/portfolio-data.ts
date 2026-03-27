@@ -127,10 +127,10 @@ export const portfolioData = {
     },
   ],
   certificates: [
-    "Cloud Computing – NPTEL",
-    "Data Structures and Algorithms – Iamneo",
-    "Introduction to Hardware and Operating Systems – IBM",
-    "Database Management System – EBOX",
+    { name: "Cloud Computing – NPTEL", link: "https://drive.google.com/file/d/1JZXRdmhBRUk9Vr8_J03rgl4fPC4nZIv9/view" },
+    { name: "Data Structures and Algorithms – Iamneo", link: "https://drive.google.com/drive/u/1/folders/1uMd5WumKvOjeVvtYUFoOJsFSIVayG_h_" },
+    { name: "Introduction to Hardware and Operating Systems – IBM", link: "https://drive.google.com/file/d/1_D-Vs0MchO5b6IdSTtf-NRsCv7y2klRH/view" },
+    { name: "Database Management System – EBOX", link: "https://drive.google.com/drive/u/1/folders/1uMd5WumKvOjeVvtYUFoOJsFSIVayG_h_" },
   ],
   navigation: [
     { label: "Home", id: "hero" },
