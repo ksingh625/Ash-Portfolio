@@ -8,14 +8,6 @@ import { portfolioData } from '@/lib/portfolio-data';
 export function LeftSidebar() {
   const { profile } = portfolioData;
 
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/Ashish Kumar Singh CV.pdf';
-    link.download = 'Ashish Kumar Singh CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <motion.aside 
@@ -75,13 +67,14 @@ export function LeftSidebar() {
 
       {/* Action Buttons */}
       <div className="space-y-1.5 my-25">
-        <button
-          onClick={handleDownloadCV}
-          className="w-full bg-foreground text-background px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5"
+        <a
+          href="/Ashish Kumar Singh CV.pdf"
+          download="Ashish Kumar Singh CV.pdf"
+          className="w-full bg-foreground text-background px-3 py-1.5 rounded text-xs font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 text-center"
         >
           Download CV
           <span>↓</span>
-        </button>
+        </a>
 
       </div>
     </motion.aside>

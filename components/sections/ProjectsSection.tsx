@@ -13,7 +13,7 @@ export function ProjectsSection() {
           </span>
         </FadeIn>
         {`\n\n`}
-        <div className="grid grid-cols-2 gap-8 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
           {portfolioData.projects.map((project, idx) => (
             <FadeIn key={project.id} delay={0.1 * idx}>
               <div className="border border-border rounded-lg p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50 transition-all duration-300">

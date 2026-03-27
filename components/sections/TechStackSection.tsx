@@ -29,14 +29,14 @@ export function TechStackSection() {
             {techItems.map((item, idx) => (
               <FadeIn
                 key={item.name}
-                delay={idx * 0.05}
-                className="flex flex-col items-start justify-between border-r border-b border-border p-4 gap-4 hover:-translate-y-1 hover:shadow-lg hover:bg-neutral-900 transition-all duration-300 cursor-default"
+                delay={0.1 + idx * 0.15}
+                className="flex flex-col items-start justify-between border-r border-b border-border p-3 md:p-4 gap-3 md:gap-4 hover:-translate-y-1 hover:shadow-lg hover:bg-neutral-900 transition-all duration-300 cursor-default group"
               >
                 {/* Name */}
                 <span className="text-xs text-foreground font-mono">{item.name}</span>
 
                 {/* Icon */}
-                <div className="w-10 h-10 relative saturate-0 hover:saturate-100 transition-all duration-300">
+                <div className="w-8 h-8 md:w-10 md:h-10 relative saturate-0 group-hover:saturate-100 transition-all duration-300">
                   <Image
                     src={item.icon}
                     alt={item.name}

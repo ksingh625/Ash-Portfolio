@@ -11,7 +11,7 @@ export function WhatIDoSection() {
         
         <div className="flex flex-col gap-12 mt-2">
           {portfolioData.whatIDo.map((item, idx) => (
-            <FadeIn key={idx} delay={idx * 0.15} className="flex flex-col gap-6">
+            <FadeIn key={idx} delay={0.1 + idx * 0.15} className="flex flex-col gap-4">
               <h3 className="text-xl font-bold text-foreground">
                 {idx + 1}. {item.category}
               </h3>

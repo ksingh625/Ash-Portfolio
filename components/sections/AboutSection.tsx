@@ -8,14 +8,6 @@ import { FadeIn } from '@/components/animations/FadeIn';
 export function AboutSection() {
   const { about } = portfolioData;
 
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/Ashish Kumar Singh CV.pdf';
-    link.download = 'Ashish Kumar Singh CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <section id="about" className="mb-0 pt-0">
@@ -55,18 +47,20 @@ export function AboutSection() {
 
         {/* Download CV button */}
         <div className="mt-10 flex items-center gap-0">
-          <button
-            onClick={handleDownloadCV}
-            className="bg-secondary border border-border px-5 py-2.5 text-sm font-bold font-mono hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          <a
+            href="/Ashish Kumar Singh CV.pdf"
+            download="Ashish Kumar Singh CV.pdf"
+            className="bg-secondary border border-border px-5 py-2.5 text-sm font-bold font-mono hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center"
           >
             Download CV
-          </button>
-          <button
-            onClick={handleDownloadCV}
-            className="bg-secondary border border-border border-l-0 px-4 py-1.5 hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          </a>
+          <a
+            href="/Ashish Kumar Singh CV.pdf"
+            download="Ashish Kumar Singh CV.pdf"
+            className="bg-secondary border border-border border-l-0 px-4 py-1.5 hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center"
           >
             <span className="text-lg">↓</span>
-          </button>
+          </a>
         </div>
       </FadeIn>
     </section>

@@ -17,17 +17,37 @@ import { EducationSection } from '@/components/sections/EducationSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { ProfilePhotoCard } from '@/components/portfolio/ProfilePhotoCard';
 import { ClipoWorkPage } from '@/components/work/ClipoWorkPage';
+import { MobileMenu } from '@/components/portfolio/MobileMenu';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('ash.info');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavigate = (id: string) => {
+    setActiveTab('ash.info');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <div className="bg-background text-foreground h-screen flex flex-col overflow-hidden">
-      <Header activeTab={activeTab} onTabChange={setActiveTab} />
+      <Header 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab} 
+        onMenuToggle={() => setIsMenuOpen(true)}
+      />
+
+      <MobileMenu 
+        isOpen={isMenuOpen} 
+        onClose={() => setIsMenuOpen(false)} 
+        onNavigate={handleNavigate}
+      />
       
       <div className="flex flex-1 overflow-hidden">
-        {/* Left Sidebar */}
-        <div className="w-68 flex-shrink-0 border-r border-border">
+        {/* Left Sidebar (Desktop Only) */}
+        <div className="w-68 flex-shrink-0 border-r border-border hidden md:block">
           <LeftSidebar />
         </div>
 
@@ -35,17 +55,22 @@ export default function Home() {
         <main className="flex-1 overflow-y-auto" id="main-scroll-container">
           {activeTab === 'ash.info' && (
             <GlobalIDEWrapper>
-              <div className="py-0 flex flex-col gap-28">
+              <div className="py-0 flex flex-col gap-8 md:gap-28">
                 <HeroSection />
+                
+                {/* Mobile Photo Card */}
+                <div className="md:hidden">
+                  <ProfilePhotoCard />
+                </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start relative">
                   {/* Left side: The flowing sections */}
-                  <div className="md:col-span-3 flex flex-col gap-28">
+                  <div className="md:col-span-3 flex flex-col gap-8 md:gap-28">
                     <AboutSection />
                     <ExperienceSection />
                   </div>
                   
-                  {/* Right side: Sticky Photo */}
+                  {/* Right side: Sticky Photo (Desktop Only) */}
                   <div className="md:col-span-2 relative hidden md:block h-full">
                     <div className="sticky top-24">
                       <ProfilePhotoCard />
@@ -70,13 +95,13 @@ export default function Home() {
 
           {activeTab === 'blog.share' && (
             <div className="flex items-center justify-center h-full">
-              <p className="text-muted-foreground font-mono text-sm">Coming soon...</p>
+              <p className="text-muted-foreground font-mono text-sm text-center">Coming soon...</p>
             </div>
           )}
         </main>
 
-        {/* Right Sidebar */}
-        <div className="w-48 flex-shrink-0 border-l border-border">
+        {/* Right Sidebar (Desktop Only) */}
+        <div className="w-48 flex-shrink-0 border-l border-border hidden md:block">
           <RightSidebar onNavigateToContact={() => {
             setActiveTab('ash.info');
             setTimeout(() => {

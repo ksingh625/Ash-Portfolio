@@ -138,6 +138,13 @@
     width: 100%;
   }
 
+  @media (max-width: 768px) {
+    p {
+      font-size: 14px;
+      line-height: 1.5em;
+    }
+  }
+
   h1 {
     color: #f5f5f5;
     user-select: none;
@@ -152,6 +159,12 @@
     width: 100%;
   }
 
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+  }
+
   h2 {
     color: #f5f5f5;
     user-select: none;
@@ -164,6 +177,12 @@
     letter-spacing: 0em;
     line-height: 1.2em;
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 24px;
+    }
   }
 
   h3 {
@@ -258,6 +277,12 @@
     line-height: 1.5rem;
   }
 
+  @media (max-width: 768px) {
+    .editor-grid {
+      grid-template-columns: 36px minmax(0, 1fr);
+    }
+  }
+
   .editor-line-numbers {
     background: rgba(255, 255, 255, 0.02);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
@@ -278,8 +303,15 @@
     font-family: 'IBM Plex Mono', monospace;
   }
 
+  @media (max-width: 768px) {
+    .editor-content {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
   .editor-tabs {
     border-inline: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
   }
 
   .hero-title {
@@ -288,6 +320,19 @@
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 0.95;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.85rem;
+    }
   }
 
   .hero-title-primary {
@@ -304,6 +349,13 @@
     max-width: 62ch;
     color: var(--muted-foreground);
     font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-body {
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
   }
 
   @keyframes hero-paragraph-in {
