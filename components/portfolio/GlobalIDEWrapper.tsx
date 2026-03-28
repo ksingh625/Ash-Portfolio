@@ -11,8 +11,8 @@ export function GlobalIDEWrapper({ children }: { children: React.ReactNode }) {
       if (contentRef.current) {
         // Measure exact height of the inner content, ignoring grid stretches
         const height = contentRef.current.getBoundingClientRect().height;
-        // Add 52px for editor-content padding, plus exactly 72px (3 lines of 24px) for the trailing lines
-        const lines = Math.max(10, Math.ceil((height + 124) / 24));
+        // Add padding and exactly 3 lines of trailing numbers
+        const lines = Math.max(10, Math.ceil((height + 80) / 24));
         setLineCount(lines);
       }
     };

@@ -46,8 +46,8 @@ export function Header({ activeTab, onTabChange, onMenuToggle }: HeaderProps) {
       </button>
 
       {/* Left: Welcome text (Desktop Only) */}
-      <div className="hidden md:flex px-18 text-xs text-muted-foreground items-center h-full whitespace-nowrap">
-        Welcome to my world!
+      <div className="hidden md:flex w-68 px-6 text-[10px] text-muted-foreground items-center h-full whitespace-nowrap border-r border-border shrink-0 font-mono uppercase tracking-wider">
+        Portfolio.exe
       </div>
 
       {/* Center: Tabs (Desktop) / Active Tab (Mobile) */}
@@ -58,7 +58,7 @@ export function Header({ activeTab, onTabChange, onMenuToggle }: HeaderProps) {
             <button
               key={tab}
               onClick={() => onTabChange(tab)}
-              className={`px-8 text-xs flex items-center border-l border-border transition-colors ${
+              className={`px-8 text-xs flex items-center border-l border-border transition-colors last:border-r ${
                 activeTab === tab
                   ? 'bg-neutral-900 text-foreground border-b-2 border-b-accent'
                   : 'text-muted-foreground hover:text-foreground'

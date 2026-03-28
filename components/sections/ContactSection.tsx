@@ -27,7 +27,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="mb-0 mt-16 pt-0 pb-12">
+    <section id="contact" className="mb-0 mt-16 pt-0 pb-0">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
 
         {/* Left Side: Header */}

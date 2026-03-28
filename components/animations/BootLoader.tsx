@@ -4,14 +4,16 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BOOT_SEQUENCES = [
-  { text: 'Initializing portfolio kernel...', delay: 200 },
-  { text: 'Checking system integrity...', delay: 400 },
-  { text: 'Loading modules: [Hero, About, Projects, Experience]', delay: 600 },
-  { text: 'Parsing configuration files...', delay: 300 },
-  { text: 'Establishing secure connection to ashish.dev...', delay: 500 },
-  { text: 'Syncing creative assets...', delay: 400 },
-  { text: 'Optimizing UI rendering engine...', delay: 300 },
-  { text: 'Boot sequence complete. Ready to launch.', delay: 500 },
+  { text: 'Initializing portfolio kernel...', delay: 150 },
+  { text: 'Checking system integrity...', delay: 300 },
+  { text: 'Loading IntelliSense subsystems...', delay: 400 },
+  { text: 'Building file system tree...', delay: 350 },
+  { text: 'Loading modules: [Hero, About, Projects, Experience]', delay: 500 },
+  { text: 'Indexing creative assets...', delay: 300 },
+  { text: 'Loading extensions: [Git, Debugger, Tailwind, Framer]', delay: 450 },
+  { text: 'Syncing remote repositories...', delay: 300 },
+  { text: 'Optimizing UI rendering engine...', delay: 200 },
+  { text: 'Connection established. Boot sequence complete.', delay: 400 },
 ];
 
 export const BootLoader = ({ onComplete }: { onComplete: () => void }) => {
@@ -45,12 +47,33 @@ export const BootLoader = ({ onComplete }: { onComplete: () => void }) => {
           className="fixed inset-0 z-[9999] bg-[#0d0d0d] flex flex-col items-center justify-center font-mono p-6"
         >
           <div className="w-full max-w-2xl">
+            {/* IDE Style Logo */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="flex justify-center mb-16"
+            >
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div className="relative px-6 py-3 bg-[#111] ring-1 ring-zinc-800 rounded-lg flex items-center gap-3">
+                  <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    A
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-zinc-200 font-bold tracking-tight text-sm">ASHISH IDE</span>
+                    <span className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Professional Edition</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Terminal Header */}
             <div className="flex items-center gap-2 mb-4 opacity-50">
               <div className="w-3 h-3 rounded-full bg-red-500/50" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
               <div className="w-3 h-3 rounded-full bg-green-500/50" />
-              <span className="text-xs ml-2 text-zinc-500">ashish-os — bash — 80x24</span>
+              <span className="text-xs ml-2 text-zinc-500">ashish-os — zsh — 80x24</span>
             </div>
 
             {/* Terminal Content */}
