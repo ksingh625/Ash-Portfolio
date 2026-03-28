@@ -23,8 +23,14 @@ export function RightSidebar({ onNavigateToContact }: RightSidebarProps) {
         const container = document.getElementById('main-scroll-container');
         if (!container) return;
 
-        // 1. Check if user is scrolled to the absolute bottom
+        // 1. Check if user is scrolled to the absolute top/bottom
         const { scrollTop, scrollHeight, clientHeight } = container;
+        
+        if (scrollTop < 50) {
+          setActiveSection(navItems[0].id);
+          return;
+        }
+
         // If within 20px of the bottom, just activate the very last item!
         if (Math.abs(scrollHeight - clientHeight - scrollTop) < 20) {
           setActiveSection(navItems[navItems.length - 1].id);

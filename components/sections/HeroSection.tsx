@@ -8,7 +8,7 @@ export function HeroSection() {
   const subtext = portfolioData.hero.subtext;
 
   return (
-    <section id="home" className="mb-0 pb-0">
+    <section id="hero" className="mb-0 pb-0">
         {`<!-- Hero section -->\n\n`}
         <FadeIn delay={0.1}>
           <span className="hero-title hero-title-primary">{headlineTop}</span>
