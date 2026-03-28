@@ -57,7 +57,12 @@ export function LeftSidebar() {
         </div>
         <div className="flex items-center gap-2 text-[12px] text-muted-foreground">
           <Mail className="w-3 h-3" />
-          <a href={`mailto:${profile.email}`} className="hover:text-foreground transition-colors">
+          <a 
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-foreground transition-colors"
+          >
             {profile.email}
           </a>
         </div>
