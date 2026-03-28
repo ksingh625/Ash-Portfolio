@@ -13,12 +13,12 @@ export function CertificatesSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {portfolioData.certificates.map((cert, idx) => (
-          <FadeIn key={idx} delay={0.2 + idx * 0.1}>
+          <FadeIn key={idx} delay={0.2 + idx * 0.1} className="h-full">
             <a 
               href={cert.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="border border-border rounded p-5 flex items-start gap-3 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group block"
+              className="border border-border rounded p-5 flex items-start gap-3 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group block h-full"
             >
               <span className="text-primary mt-0.5 font-bold group-hover:translate-x-1 transition-transform">▸</span>
               <div className="flex-1">

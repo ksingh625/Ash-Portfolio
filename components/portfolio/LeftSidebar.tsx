@@ -55,9 +55,11 @@ export function LeftSidebar() {
         <div className="flex items-center gap-1.5">
           <span className="text-xs text-muted-foreground my-1">🌐 English, Hindi</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <Mail className="w-4 h-4 flex-shrink-0 text-muted-foreground" />
-          <span className="text-xs text-muted-foreground my-1">ksash529@gmail.com</span>
+        <div className="flex items-center gap-2 text-[12px] text-muted-foreground">
+          <Mail className="w-3 h-3" />
+          <a href={`mailto:${profile.email}`} className="hover:text-foreground transition-colors">
+            {profile.email}
+          </a>
         </div>
         <div className="flex items-center gap-1.5">
           <Phone className="w-4 h-4 flex-shrink-0 text-muted-foreground" />
