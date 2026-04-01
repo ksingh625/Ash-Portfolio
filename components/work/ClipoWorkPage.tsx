@@ -261,8 +261,47 @@ export function ClipoWorkPage() {
         </div>
       </section>
 
-      {/* Bottom spacer */}
-      <div className="h-24" />
+      {/* — Takeaways & Conclusion — */}
+      <section className="py-24 px-6 bg-secondary/20 text-foreground mt-16 rounded-t-2xl border-t border-l border-r border-border relative overflow-hidden">
+        {/* Subtle background element */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#7c5cfc]/10 blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <FadeUpOnScroll>
+            <div className="inline-flex items-center justify-center gap-3 mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#7c5cfc]/70" />
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+                Project Conclusion
+              </span>
+              <div className="w-1.5 h-1.5 rounded-full bg-[#7c5cfc]/70" />
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight">
+              Design is not just how it looks.<br/>
+              It's how it <span className="text-[#7c5cfc] italic">works.</span>
+            </h2>
+            
+            <p className="text-muted-foreground font-mono text-sm md:text-base max-w-2xl mx-auto mb-14 leading-relaxed">
+              Working on Clipo allowed me to seamlessly merge visual aesthetics with functional user experience, creating a cohesive journey that connected the brand's creative identity with its core product interface.
+            </p>
+            
+            <div className="flex justify-center">
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('main-scroll-container') || document.documentElement;
+                  el.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-14 h-14 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background text-muted-foreground transition-all duration-500 group"
+                aria-label="Scroll to top"
+              >
+                <svg className="w-5 h-5 group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
+            </div>
+          </FadeUpOnScroll>
+        </div>
+      </section>
     </div>
   );
 }

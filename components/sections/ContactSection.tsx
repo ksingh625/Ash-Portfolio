@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { FadeIn } from '@/components/animations/FadeIn';
 
 export function ContactSection() {
@@ -14,11 +12,46 @@ export function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+    setStatus('submitting');
+
+    // Web3Forms integration - using a public API key for demonstration.
+    // The user should replace this with their own Access Key.
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          // Provide your Web3Forms Access Key here! Get it at https://web3forms.com
+          access_key: 'e5ac95bb-228c-4fea-9a0e-5d3e2ff3b7aa',
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+
+    setTimeout(() => {
+      setStatus('idle');
+    }, 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -55,7 +88,7 @@ export function ContactSection() {
                   <input
                     type="text"
                     name="firstName"
-                    placeholder="Mazakine"
+                    placeholder="Alex"
                     value={formData.firstName}
                     onChange={handleChange}
                     required
@@ -67,7 +100,7 @@ export function ContactSection() {
                   <input
                     type="text"
                     name="lastName"
-                    placeholder="Reed"
+                    placeholder="Carter"
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -82,7 +115,7 @@ export function ContactSection() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="example@gmail.com"
+                  placeholder="hello@awesomebrand.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -96,7 +129,7 @@ export function ContactSection() {
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Tell us the purpose"
+                  placeholder="UI/UX Redesign, App Development, etc."
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -109,7 +142,7 @@ export function ContactSection() {
                 <label className="block font-mono text-sm tracking-wide text-foreground/80 mb-2">Message</label>
                 <textarea
                   name="message"
-                  placeholder="Write your message here"
+                  placeholder="Tell me about your amazing project, specific requirements, or just say hi!"
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -118,14 +151,22 @@ export function ContactSection() {
                 />
               </div>
 
-              {/* Submit Button */}
-              <div>
+              {/* Submit Button & Status */}
+              <div className="flex items-center gap-4">
                 <button
                   type="submit"
-                  className="bg-foreground text-background font-mono text-sm font-bold px-6 py-3 hover:bg-foreground/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                  disabled={status === 'submitting'}
+                  className="bg-foreground text-background font-mono text-sm font-bold px-6 py-3 hover:bg-foreground/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
                 >
-                  Send message
+                  {status === 'submitting' ? 'Sending...' : 'Send message'}
                 </button>
+
+                {status === 'success' && (
+                  <span className="text-sm font-mono text-green-500 animate-pulse">Message sent successfully!</span>
+                )}
+                {status === 'error' && (
+                  <span className="text-sm font-mono text-red-500">Failed to send! Please check your API key.</span>
+                )}
               </div>
 
             </form>

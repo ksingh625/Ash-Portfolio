@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FadeUpOnScroll } from '@/components/animations/FadeUpOnScroll';
+import { portfolioData } from '@/lib/portfolio-data';
 
 const designImages = [
   { src: '/CLIPO first post (4).png', alt: 'CLIPO first post' },
@@ -82,8 +83,38 @@ export function DesignsPage() {
         </div>
       </section>
       
+      {/* Call to Action */}
+      <section className="py-24 px-6 relative overflow-hidden flex flex-col items-center border-t border-border mt-12 bg-secondary/20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
+        <FadeUpOnScroll>
+          <div className="max-w-2xl mx-auto text-center relative z-10">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <span className="text-primary text-sm font-mono">{'// '}</span>
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-[0.15em]">
+                What's Next
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+              Let's create something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">amazing</span> together
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base mb-10 font-mono leading-relaxed">
+              Loved these designs? Whether you need an engaging social media campaign, a complete brand identity, or an intuitive user interface, I'm here to bring your vision to life.
+            </p>
+            <a 
+              href={portfolioData.profile.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-foreground text-background text-sm font-bold rounded-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            >
+              Get in Touch
+              <span className="text-lg animate-pulse">↗</span>
+            </a>
+          </div>
+        </FadeUpOnScroll>
+      </section>
+
       {/* Bottom spacer */}
-      <div className="h-24" />
+      <div className="h-16" />
     </div>
   );
 }
