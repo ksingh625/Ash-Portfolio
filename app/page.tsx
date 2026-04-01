@@ -18,6 +18,7 @@ import { EducationSection } from '@/components/sections/EducationSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { ProfilePhotoCard } from '@/components/portfolio/ProfilePhotoCard';
 import { ClipoWorkPage } from '@/components/work/ClipoWorkPage';
+import { DesignsPage } from '@/components/work/DesignsPage';
 import { BootLoader } from '@/components/animations/BootLoader';
 import { MobileMenu } from '@/components/portfolio/MobileMenu';
 
@@ -99,6 +100,10 @@ export default function Home() {
 
           {activeTab === 'work.done' && (
             <ClipoWorkPage />
+          )}
+
+          {activeTab === 'designs.done' && (
+            <DesignsPage />
           )}
 
           {activeTab === 'blog.share' && (

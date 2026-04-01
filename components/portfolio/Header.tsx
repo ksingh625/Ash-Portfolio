@@ -13,7 +13,7 @@ interface HeaderProps {
 export function Header({ activeTab, onTabChange, onMenuToggle }: HeaderProps) {
   const [time, setTime] = useState('');
 
-  const tabs = ['ash.info', 'work.done', 'blog.share'];
+  const tabs = ['ash.info', 'work.done', 'designs.done', 'blog.share'];
 
   useEffect(() => {
     const update = () => {
