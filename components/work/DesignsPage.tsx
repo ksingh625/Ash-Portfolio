@@ -6,6 +6,11 @@ import { FadeUpOnScroll } from '@/components/animations/FadeUpOnScroll';
 import { portfolioData } from '@/lib/portfolio-data';
 
 const designImages = [
+  { src: '/Educational_Trip.png', alt: 'Educational Trip to Jaipur' },
+  { src: '/Blinkit_Ambulance.png', alt: 'Blinkit Ambulance Service' },
+  { src: '/Clipo_AI_Framing.jpg', alt: 'Clipo AI Auto Framing' },
+  { src: '/Mayclor Flyer A3.png', alt: 'Mayclor Flyer A3' },
+  { src: '/induction Crew.png', alt: 'Induction Crew' },
   { src: '/CLIPO first post (4).png', alt: 'CLIPO first post' },
   { src: '/CR feature @6.png', alt: 'CR feature' },
   { src: '/Clipo Flyer (A4 (Landscape).png', alt: 'Clipo Flyer' },
@@ -16,10 +21,8 @@ const designImages = [
   { src: '/Hiring @Drive_dev.png', alt: 'Hiring Post' },
   { src: '/INSTANT CLIPS.BY KEYWORD MAGIC!.png', alt: 'Instant Clips' },
   { src: '/Life nowadays.png', alt: 'Life nowadays' },
-  { src: '/Mayclor Flyer A3.png', alt: 'Mayclor Flyer A3' },
   { src: '/Orange Yellow Organic Skincare Serum Product Instagram Post.png', alt: 'Skincare Instagram Post' },
   { src: '/creatiwise brand identity.jpg', alt: 'Creatiwise brand identity' },
-  { src: '/induction Crew.png', alt: 'Induction Crew' },
   { src: '/what if.png', alt: 'What if concept' },
   { src: '/5 Signs.png', alt: '5 Signs' },
   { src: '/5 Tips To Increase Work.png', alt: '5 Tips To Increase Work' },
@@ -43,7 +46,7 @@ export function DesignsPage() {
           </FadeUpOnScroll>
 
           <FadeUpOnScroll delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-4">
+            <h1 className="text-4xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-4">
               Visual Designs
             </h1>
           </FadeUpOnScroll>
@@ -61,6 +64,7 @@ export function DesignsPage() {
       {/* Gallery Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
+          {/* Gallery - Masonry layout */}
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {designImages.map((image, idx) => (
               <FadeUpOnScroll key={idx} delay={(idx % 6) * 0.1}>
@@ -94,7 +98,7 @@ export function DesignsPage() {
                 What's Next
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight">
               Let's create something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">amazing</span> together
             </h2>
             <p className="text-muted-foreground text-sm md:text-base mb-10 font-mono leading-relaxed">

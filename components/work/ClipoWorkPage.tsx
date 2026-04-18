@@ -49,7 +49,7 @@ export function ClipoWorkPage() {
           </FadeUpOnScroll>
 
           <FadeUpOnScroll delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-2">
+            <h1 className="text-4xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-2">
               Clipo
             </h1>
           </FadeUpOnScroll>
@@ -192,7 +192,7 @@ export function ClipoWorkPage() {
                   Prototype
                 </span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <h2 className="text-2xl md:text-5xl font-bold mb-4">
                 High-Fidelity Homepage Wireframe
               </h2>
               <p className="text-sm md:text-base text-foreground/70 max-w-2xl mx-auto font-mono leading-relaxed">

@@ -28,6 +28,13 @@ export default function Home() {
   const [isBooting, setIsBooting] = useState(true);
 
   const handleNavigate = (id: string) => {
+    if (['ash.info', 'work.done', 'designs.done', 'blog.share'].includes(id)) {
+      setActiveTab(id);
+      const container = document.getElementById('main-scroll-container');
+      if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     setActiveTab('ash.info');
     setTimeout(() => {
       const el = document.getElementById(id);

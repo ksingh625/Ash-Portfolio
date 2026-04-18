@@ -133,7 +133,9 @@ export const portfolioData = {
     { name: "Database Management System – EBOX", link: "https://drive.google.com/drive/u/1/folders/1uMd5WumKvOjeVvtYUFoOJsFSIVayG_h_" },
   ],
   navigation: [
-    { label: "Home", id: "hero" },
+    { label: "Main Portfolio", id: "ash.info" },
+    { label: "Clipo Case Study", id: "work.done" },
+    { label: "Visual Designs", id: "designs.done" },
     { label: "About me", id: "about" },
     { label: "Experience", id: "experience" },
     { label: "What I do", id: "what-i-do" },
