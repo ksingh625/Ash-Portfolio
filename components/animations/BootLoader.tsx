@@ -57,8 +57,8 @@ export const BootLoader = ({ onComplete }: { onComplete: () => void }) => {
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                 <div className="relative px-6 py-3 bg-[#111] ring-1 ring-zinc-800 rounded-lg flex items-center gap-3">
-                  <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                    A
+                  <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg overflow-hidden p-1.5">
+                    <img src="/apple-icon.svg" alt="Logo" className="w-full h-full object-contain" />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-zinc-200 font-bold tracking-tight text-sm">ASHISH IDE</span>
